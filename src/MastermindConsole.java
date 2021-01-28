@@ -1,3 +1,7 @@
+
+/*******************************************
+ * © 2021 HAN University of Applied Sciences
+ ******************************************/
 import java.util.Scanner;
 
 public class MastermindConsole {
