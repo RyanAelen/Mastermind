@@ -14,7 +14,7 @@ public class MastermindGame {
             for (int i = 0; i < kleuren.length; i++) {
                 code += kleuren[ThreadLocalRandom.current().nextInt(0, 4)];
             }
-            System.out.println(code);
+            buildRegex();
         }
         return code;
     }
