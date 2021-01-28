@@ -6,6 +6,7 @@ public class MastermindGame {
     private String code;
     private char[] kleuren = { 'B', 'G', 'R', 'Y' };
     private int turnsleft = 8;
+    private String regex;
 
     public String generateSecretCode() {
         if (code == null) {
@@ -60,6 +61,12 @@ public class MastermindGame {
             return true;
         }
         return false;
+    }
+
+    private void buildRegex() {
+        regex = "^[";
+        regex += String.valueOf(kleuren);
+        regex += "]+$";
     }
 
 }
