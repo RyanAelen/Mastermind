@@ -9,6 +9,11 @@ public class MastermindGame {
     final private int codelenght = 4;
     private String regex;
 
+    /**
+     * Maakt een nieuwe code aan als <code>code</code> ==<code>NULL</code>
+     * 
+     * @return sercet code, van <code>4</code> lang
+     */
     public String generateSecretCode() {
         if (code == null) {
             code = "";
@@ -20,10 +25,21 @@ public class MastermindGame {
         return code;
     }
 
+    /**
+     * Als de guessString het zelfde is al de code word <code>gameWon</code> True
+     * Anders word de input gecontroleerd of een gelde regex en lengte, zijn die
+     * twee goed dan word <code>tunrsleft</code> een beurt afgehaald, aan gezien het
+     * niet de geheimge code was. Een melding word uitgepint op besis van de twee
+     * mogelijke problemen.
+     * 
+     * @param guessString Geef een string van max <code>4</code> lang, alle karatker
+     *                    moeten voor komen in <code>kleuren</code>
+     */
     public void checkCombination(String guessString) {
         lastGuest = "xxxx".toCharArray();
         if (generateSecretCode().equals(guessString)) {
             gameWon = true;
+            return;
         }
         if (guessString.matches(regex)) {
             if (guessString.length() == codelenght) {
@@ -37,10 +53,20 @@ public class MastermindGame {
         }
     }
 
+    /**
+     * 
+     * @return <code>True</code> als de speler heeft gewonnen
+     *         <li><code>False</code> zo lang de speler niet heeft gewonnen
+     */
     public boolean isWon() {
         return gameWon;
     }
 
+    /**
+     * 
+     * @return geeft text met daar in de aantal correcte locatie geraden en de
+     *         aantal in corecte locatie geraden
+     */
     public String getHint() {
         int zelfdeplek = 0;
         int verkeerderflek = 0;
@@ -66,6 +92,12 @@ public class MastermindGame {
         return "right colour right position = " + zelfdeplek + "\n" + "right colour wrong position = " + verkeerderflek;
     }
 
+    /**
+     * Controleer of de speler doors zijn beurten heen is
+     * 
+     * @return <code>True</code> als speler geen turns meer heeft.
+     *         <li><code>False</code> als de speler nog turns over heeft</li>
+     */
     public boolean maxTurnsUsed() {
         if (turnsleft <= 0) {
             return true;
@@ -73,6 +105,9 @@ public class MastermindGame {
         return false;
     }
 
+    /**
+     * Zet de regex naar de geweste regex voor de kleuren.
+     */
     private void buildRegex() {
         regex = "^[";
         regex += String.valueOf(kleuren);
