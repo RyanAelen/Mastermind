@@ -20,6 +20,7 @@ public class MastermindGame {
     }
 
     public void checkCombination(String guessString) {
+        lastGuest = "xxxx".toCharArray();
         if (generateSecretCode().equals(guessString)) {
             gameWon = true;
         }
