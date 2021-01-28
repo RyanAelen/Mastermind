@@ -6,13 +6,14 @@ public class MastermindGame {
     private String code;
     private char[] kleuren = { 'B', 'G', 'R', 'Y' };
     private int turnsleft = 8;
+    final private int codelenght = 4;
     private String regex;
 
     public String generateSecretCode() {
         if (code == null) {
             code = "";
             for (int i = 0; i < kleuren.length; i++) {
-                code += kleuren[ThreadLocalRandom.current().nextInt(0, 4)];
+                code += kleuren[ThreadLocalRandom.current().nextInt(0, kleuren.length)];
             }
             buildRegex();
         }
