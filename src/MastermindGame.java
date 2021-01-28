@@ -83,6 +83,7 @@ public class MastermindGame {
                     if (guest[j] != 'x') {
                         if (guest[i] == generateSecretCode().charAt(j)) {
                             verkeerderflek++;
+                            break;
                         }
                     }
                 }
