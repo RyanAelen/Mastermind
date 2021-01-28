@@ -24,8 +24,16 @@ public class MastermindGame {
         if (generateSecretCode().equals(guessString)) {
             gameWon = true;
         }
-        lastGuest = guessString.toCharArray();
-        turnsleft--;
+        if (guessString.matches(regex)) {
+            if (guessString.length() == codelenght) {
+                lastGuest = guessString.toCharArray();
+                turnsleft--;
+            } else {
+                System.out.println("Wrong input follow syntax: XXXX");
+            }
+        } else {
+            System.out.println("Wrong color input follow " + String.valueOf(kleuren));
+        }
     }
 
     public boolean isWon() {
